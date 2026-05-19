@@ -21,6 +21,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from utils import core_engine, db_manager
+
+db_manager.init_db()
+
 from utils.config import reload_all_configs
 from utils.log_stream_cache import RecentParsedLogCache
 from utils.email_providers import mail_service
@@ -220,8 +223,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-db_manager.init_db()
 
 app.include_router(api_routes.router)
 
