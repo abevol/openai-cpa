@@ -29,7 +29,8 @@ class get_db_conn:
                 user=MYSQL_CFG.get('user', 'root'),
                 password=MYSQL_CFG.get('password', ''),
                 database=MYSQL_CFG.get('db_name', 'wenfxl_manager'),
-                charset='utf8mb4'
+                charset='utf8mb4',
+                ssl={'ssl': {}}
             )
         else:
             self.conn = sqlite3.connect(DB_PATH, timeout=30, isolation_level="IMMEDIATE")
